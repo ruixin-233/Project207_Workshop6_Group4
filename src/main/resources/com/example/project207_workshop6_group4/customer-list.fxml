@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxWidth="5500.0" prefHeight="400.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.CustomerList">
+   <children>
+      <TableView prefHeight="400.0" prefWidth="750.0">
+        <columns>
+          <TableColumn fx:id="colCustomerId" prefWidth="46.99999922513962" text="Cust ID" />
+          <TableColumn fx:id="colCustFirstName" prefWidth="76.20001602172852" text="First Name" />
+            <TableColumn fx:id="colCustLastName" prefWidth="74.5999755859375" text="Last Name" />
+            <TableColumn fx:id="colCustAddress" prefWidth="83.20001220703125" text="Address" />
+            <TableColumn fx:id="colCustCity" prefWidth="60.79998779296875" text="City" />
+            <TableColumn fx:id="colCustProv" prefWidth="58.4000244140625" text="Province" />
+            <TableColumn fx:id="colCustPostal" prefWidth="71.4000244140625" text="Postal" />
+            <TableColumn fx:id="colCustCountry" prefWidth="64.60000610351562" text="Country" />
+            <TableColumn fx:id="colCustBusPhone" prefWidth="79.60003662109375" text="Phone" />
+            <TableColumn fx:id="colCustEmail" prefWidth="77.4000244140625" text="Email" />
+            <TableColumn fx:id="colAgentId" prefWidth="46.800048828125" text="Agt ID" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
