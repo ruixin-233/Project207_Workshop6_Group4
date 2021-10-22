@@ -39,23 +39,8 @@ public class CustomerController {
     @FXML // fx:id="colCustLastName"
     private TableColumn<Customer, String> colCustLastName; // Value injected by FXMLLoader
 
-    @FXML // fx:id="colCustAddress"
-    private TableColumn<Customer, String> colCustAddress; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colCustCity"
-    private TableColumn<Customer, String> colCustCity; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colCustProv"
-    private TableColumn<Customer, String> colCustProv; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colCustPostal"
-    private TableColumn<Customer, String> colCustPostal; // Value injected by FXMLLoader
-
-    @FXML // fx:id="colCustCountry"
-    private TableColumn<Customer, String> colCustCountry; // Value injected by FXMLLoader
-
     @FXML // fx:id="colCustBusPhone"
-    private TableColumn<Customer, String> colCustBusPhone; // Value injected by FXMLLoader
+    private TableColumn<Customer, String> colCustHomePhone; // Value injected by FXMLLoader
 
     @FXML // fx:id="colCustEmail"
     private TableColumn<Customer, String> colCustEmail; // Value injected by FXMLLoader
@@ -70,12 +55,7 @@ public class CustomerController {
         assert colCustomerId != null : "fx:id=\"colCustomerId\" was not injected: check your FXML file 'customer-list.fxml'.";
         assert colCustFirstName != null : "fx:id=\"colCustFirstName\" was not injected: check your FXML file 'customer-list.fxml'.";
         assert colCustLastName != null : "fx:id=\"colCustLastName\" was not injected: check your FXML file 'customer-list.fxml'.";
-        assert colCustAddress != null : "fx:id=\"colCustAddress\" was not injected: check your FXML file 'customer-list.fxml'.";
-        assert colCustCity != null : "fx:id=\"colCustCity\" was not injected: check your FXML file 'customer-list.fxml'.";
-        assert colCustProv != null : "fx:id=\"colCustProv\" was not injected: check your FXML file 'customer-list.fxml'.";
-        assert colCustPostal != null : "fx:id=\"colCustPostal\" was not injected: check your FXML file 'customer-list.fxml'.";
-        assert colCustCountry != null : "fx:id=\"colCustCountry\" was not injected: check your FXML file 'customer-list.fxml'.";
-        assert colCustBusPhone != null : "fx:id=\"colCustBusPhone\" was not injected: check your FXML file 'customer-list.fxml'.";
+        assert colCustHomePhone != null : "fx:id=\"colCustBusPhone\" was not injected: check your FXML file 'customer-list.fxml'.";
         assert colCustEmail != null : "fx:id=\"colCustEmail\" was not injected: check your FXML file 'customer-list.fxml'.";
         assert colAgentId != null : "fx:id=\"colAgentId\" was not injected: check your FXML file 'customer-list.fxml'.";
 
@@ -98,12 +78,7 @@ public class CustomerController {
                 colCustomerId.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("customerId"));
                 colCustFirstName.setCellValueFactory(new PropertyValueFactory<Customer, String>("custFirstName"));
                 colCustLastName.setCellValueFactory(new PropertyValueFactory<Customer, String>("custLastName"));
-                colCustAddress.setCellValueFactory(new PropertyValueFactory<Customer, String>("custAddress"));
-                colCustCity.setCellValueFactory(new PropertyValueFactory<Customer, String>("custCity"));
-                colCustProv.setCellValueFactory(new PropertyValueFactory<Customer, String>("custProv"));
-                colCustPostal.setCellValueFactory(new PropertyValueFactory<Customer, String>("custPostal"));
-                colCustCountry.setCellValueFactory(new PropertyValueFactory<Customer, String>("custCountry"));
-                colCustBusPhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("custBusPhone"));
+                colCustHomePhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("custHomePhone"));
                 colCustEmail.setCellValueFactory(new PropertyValueFactory<Customer, String>("custEmail"));
                 colAgentId.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("AgentId"));
                 tvCustomer.setItems(data);

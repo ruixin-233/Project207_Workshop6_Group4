@@ -62,7 +62,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.project207_workshop6_group4/com.example.project207_workshop6_group4.HelloApplication
+                                com.example.project207_workshop6_group4/com.example.project207_workshop6_group4.MainApplication
                             </mainClass>
                         </configuration>
                     </execution>
