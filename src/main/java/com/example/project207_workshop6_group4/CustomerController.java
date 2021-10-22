@@ -8,12 +8,16 @@ import java.net.ConnectException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import java.sql.*;
 
 public class CustomerController {
 
@@ -59,6 +63,8 @@ public class CustomerController {
     @FXML // fx:id="colAgentId"
     private TableColumn<Customer, Integer> colAgentId; // Value injected by FXMLLoader
 
+    private ObservableList<Customer> data = FXCollections.observableArrayList();
+
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert colCustomerId != null : "fx:id=\"colCustomerId\" was not injected: check your FXML file 'customer-list.fxml'.";
@@ -75,19 +81,36 @@ public class CustomerController {
 
         getCustomers();
 
-        tvCustomer.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                onOpenDialog(tvCustomer.getSelectionModel().getSelectedIndex());
-            }
-        });
     }
 
     private void getCustomers() {
-        ConnectException conn = DriverManager.getConnection();
-    }
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from customers");
+            ResultSetMetaData rsmd = rs.getMetaData();
+            System.out.println(rsmd.getColumnCount());
 
-    private void onOpenDialog(int selectedIndex) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(""));
+            while (rs.next())
+            {
+                data.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12)));
+
+                colCustomerId.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("customerId"));
+                colCustFirstName.setCellValueFactory(new PropertyValueFactory<Customer, String>("custFirstName"));
+                colCustLastName.setCellValueFactory(new PropertyValueFactory<Customer, String>("custLastName"));
+                colCustAddress.setCellValueFactory(new PropertyValueFactory<Customer, String>("custAddress"));
+                colCustCity.setCellValueFactory(new PropertyValueFactory<Customer, String>("custCity"));
+                colCustProv.setCellValueFactory(new PropertyValueFactory<Customer, String>("custProv"));
+                colCustPostal.setCellValueFactory(new PropertyValueFactory<Customer, String>("custPostal"));
+                colCustCountry.setCellValueFactory(new PropertyValueFactory<Customer, String>("custCountry"));
+                colCustBusPhone.setCellValueFactory(new PropertyValueFactory<Customer, String>("custBusPhone"));
+                colCustEmail.setCellValueFactory(new PropertyValueFactory<Customer, String>("custEmail"));
+                colAgentId.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("AgentId"));
+                tvCustomer.setItems(data);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

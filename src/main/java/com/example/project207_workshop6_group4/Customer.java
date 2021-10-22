@@ -12,11 +12,12 @@ public class Customer {
     private SimpleStringProperty custProv;
     private SimpleStringProperty custPostal;
     private SimpleStringProperty custCountry;
+    private SimpleStringProperty custHomePhone;
     private SimpleStringProperty custBusPhone;
     private SimpleStringProperty custEmail;
     private SimpleIntegerProperty agentId;
 
-    public Customer(int customerId,String custFirstName, String custLastName, String custAddress, String custCity, String custProv, String custPostal, String custCountry, String custBusPhone, String custEmail, int agentId) {
+    public Customer(int customerId,String custFirstName, String custLastName, String custAddress, String custCity, String custProv, String custPostal, String custCountry, String custHomePhone, String custBusPhone, String custEmail, int agentId) {
         this.customerId = new SimpleIntegerProperty(customerId);
         this.custFirstName = new SimpleStringProperty(custFirstName);
         this.custLastName = new SimpleStringProperty(custLastName);
@@ -25,6 +26,7 @@ public class Customer {
         this.custProv = new SimpleStringProperty(custProv);
         this.custPostal = new SimpleStringProperty(custPostal);
         this.custCountry = new SimpleStringProperty(custCountry);
+        this.custHomePhone = new SimpleStringProperty(custHomePhone);
         this.custBusPhone = new SimpleStringProperty(custBusPhone);
         this.custEmail = new SimpleStringProperty(custEmail);
         this.agentId = new SimpleIntegerProperty(agentId);
@@ -124,6 +126,18 @@ public class Customer {
 
     public void setCustCountry(String custCountry) {
         this.custCountry.set(custCountry);
+    }
+
+    public String getCustHomePhone() {
+        return custHomePhone.get();
+    }
+
+    public SimpleStringProperty custHomePhoneProperty() {
+        return custHomePhone;
+    }
+
+    public void setCustHomePhone(String custHomePhone) {
+        this.custHomePhone.set(custHomePhone);
     }
 
     public String getCustBusPhone() {

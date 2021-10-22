@@ -16,6 +16,7 @@
             <TableColumn fx:id="colCustProv" prefWidth="58.4000244140625" text="Province" />
             <TableColumn fx:id="colCustPostal" prefWidth="71.4000244140625" text="Postal" />
             <TableColumn fx:id="colCustCountry" prefWidth="64.60000610351562" text="Country" />
+            <TableColumn prefWidth="75.0" text="Column X" />
             <TableColumn fx:id="colCustBusPhone" prefWidth="79.60003662109375" text="Phone" />
             <TableColumn fx:id="colCustEmail" prefWidth="77.4000244140625" text="Email" />
             <TableColumn fx:id="colAgentId" prefWidth="46.800048828125" text="Agt ID" />
