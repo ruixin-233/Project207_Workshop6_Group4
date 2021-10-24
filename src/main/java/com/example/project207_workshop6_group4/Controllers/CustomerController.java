@@ -81,7 +81,7 @@ public class CustomerController {
     }
 
     private void onOpenDialog(int selectedIndex) throws IOException {
-        FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-details"));
+        FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
         Parent parent = fmxLoader.load();
         CustomerDetailController dialogController = fmxLoader.<CustomerDetailController>getController();
         dialogController.setMainObservableList(data);
@@ -89,6 +89,8 @@ public class CustomerController {
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
     private void getCustomers() {
