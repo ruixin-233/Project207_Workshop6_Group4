@@ -1,8 +1,10 @@
 /**
- * Sample Skeleton for 'customer-list.fxml' Controller Class
+ * Author: Laura Luo
+ * Date: Oct 18, 2021
+ * Project 207 - WorkShop6
  */
 
-package com.example.project207_workshop6_group4.Controllers;
+package com.example.project207_workshop6_group4;
 
 import java.io.IOException;
 import java.net.URL;
@@ -81,7 +83,7 @@ public class CustomerController {
     }
 
     private void onOpenDialog(int selectedIndex) throws IOException {
-        FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("main-menu.fxml"));
+        FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-details.fxml"));
         Parent parent = fmxLoader.load();
         CustomerDetailController dialogController = fmxLoader.<CustomerDetailController>getController();
         dialogController.setMainObservableList(data);
@@ -104,7 +106,6 @@ public class CustomerController {
             while (rs.next())
             {
                 data.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getInt(12)));
-
                 colCustomerId.setCellValueFactory(new PropertyValueFactory<Customer, Integer>("customerId"));
                 colCustFirstName.setCellValueFactory(new PropertyValueFactory<Customer, String>("custFirstName"));
                 colCustLastName.setCellValueFactory(new PropertyValueFactory<Customer, String>("custLastName"));

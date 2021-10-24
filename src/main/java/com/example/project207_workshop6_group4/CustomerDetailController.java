@@ -1,14 +1,10 @@
 /**
- * Sample Skeleton for 'editagentdialog.fxml' Controller Class
+ * Author: Laura Luo
+ * Date: Oct 18, 2021
+ * Project 207 - WorkShop6
  */
 
-package com.example.project207_workshop6_group4.Controllers;
-
-import java.net.URL;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.ResourceBundle;
+package com.example.project207_workshop6_group4;
 
 import com.example.project207_workshop6_group4.Data.Customer;
 import javafx.collections.FXCollections;
@@ -18,6 +14,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+
+import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ResourceBundle;
 
 public class CustomerDetailController {
 
@@ -72,7 +74,6 @@ public class CustomerDetailController {
     private ObservableList<Customer> mainData;
     private ObservableList customerId;
     private int selectedIndex;
-    private ArrayList<TextField> textFields;
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
@@ -91,9 +92,8 @@ public class CustomerDetailController {
         assert tfCustEmail != null : "fx:id=\"tfCustEmail\" was not injected: check your FXML file 'editagentdialog.fxml'.";
         assert tfAgentId != null : "fx:id=\"tfAgentId\" was not injected: check your FXML file 'editagentdialog.fxml'.";
 
-        textFields = new ArrayList<>(Arrays.asList(tfCustFirstName, tfCustLastName, tfCustAddress, tfCustCity, tfCustProv, tfCustPostal, tfCustCountry ,tfCustHomePhone, tfCustBusPhone, tfCustEmail, tfAgentId));
-        disableTextFields();
-        displayCustomerInfo();
+        //textFields = new ArrayList<>(Arrays.asList(tfCustFirstName, tfCustLastName, tfCustAddress, tfCustCity, tfCustProv, tfCustPostal, tfCustCountry ,tfCustHomePhone, tfCustBusPhone, tfCustEmail, tfAgentId));
+        displayCustomerId();
     }
 
     private void displayCustomerInfo() {
@@ -122,13 +122,12 @@ public class CustomerDetailController {
 
     @FXML
     void onCbCustomerClicked(ActionEvent event) {
-        displayCustomerId();
+        displayCustomerInfo();
     }
 
     private void displayCustomerId() {
-        Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select CustomerId from Customers order by CustomerId asc");
 
@@ -143,7 +142,6 @@ public class CustomerDetailController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void setMainObservableList(ObservableList<Customer> data) {
@@ -153,13 +151,18 @@ public class CustomerDetailController {
     public void setMainSelectedIndex(int selectedIndex) {
         this.selectedIndex = selectedIndex;
         Customer c = mainData.get(selectedIndex);
-    }
 
-    private void disableTextFields() {
-        for (TextField tfs : textFields){
-            tfs.setDisable(true);
-            tfs.setEditable(false);
-        }
+        cbCustomerID.setValue(c.getCustomerId());
+        tfCustFirstName.setText(c.getCustFirstName());
+        tfCustLastName.setText(c.getCustLastName());
+        tfCustAddress.setText(c.getCustAddress());
+        tfCustCity.setText(c.getCustCity());
+        tfCustProv.setText(c.getCustProv());
+        tfCustPostal.setText(c.getCustPostal());
+        tfCustCountry.setText(c.getCustCountry());
+        tfCustHomePhone.setText(c.getCustHomePhone());
+        tfCustBusPhone.setText(c.getCustBusPhone());
+        tfCustEmail.setText(c.getCustEmail());
+        tfAgentId.setText(c.getAgentId() + "");
     }
-
 }
