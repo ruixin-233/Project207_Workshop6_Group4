@@ -4,9 +4,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxWidth="5500.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.CustomerController">
+<AnchorPane maxWidth="5500.0" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.Controllers.CustomerController">
    <children>
-      <TableView fx:id="tvCustomer" layoutX="14.0" prefHeight="400.0" prefWidth="571.0">
+      <TableView fx:id="tvCustomer" layoutX="14.0" prefHeight="500.0" prefWidth="571.0">
         <columns>
           <TableColumn fx:id="colCustomerId" prefWidth="79.20001220703125" text="Customer ID" />
           <TableColumn fx:id="colCustFirstName" prefWidth="90.39996337890625" text="First Name" />

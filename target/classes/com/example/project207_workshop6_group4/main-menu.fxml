@@ -9,33 +9,42 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.MainController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.Controllers.MainController">
    <children>
-      <Text fill="#2b82b4" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Rewards Management System" textAlignment="CENTER" wrappingWidth="600.0">
+      <Text fill="#2b82b4" layoutX="7.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Rewards Management System" textAlignment="CENTER" wrappingWidth="600.0">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <VBox layoutX="168.0" layoutY="151.0" prefHeight="175.0" prefWidth="264.0">
+      <VBox layoutX="168.0" layoutY="217.0" prefHeight="230.0" prefWidth="278.0">
          <children>
-            <JFXButton fx:id="btnCustomers" prefHeight="46.0" prefWidth="262.0" text="Customers" textFill="#2b82b4">
+            <JFXButton fx:id="btnCustomers" prefHeight="60.0" prefWidth="280.0" text="Customers" textFill="#2b82b4">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="btnSponsors" prefHeight="46.0" prefWidth="262.0" text="Sponsors">
+            <JFXButton fx:id="btnSponsors" prefHeight="60.0" prefWidth="280.0" text="Sponsors">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
             </JFXButton>
-            <JFXButton fx:id="btnRewards" prefHeight="46.0" prefWidth="262.0" text="Rewards">
+            <JFXButton fx:id="btnRewards" prefHeight="60.0" prefWidth="280.0" text="Rewards">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
             </JFXButton>
          </children>
       </VBox>
-      <ImageView fitHeight="158.0" fitWidth="158.0" layoutX="221.0" layoutY="-30.0">
+      <ImageView fitHeight="158.0" fitWidth="158.0" layoutX="228.0">
          <image>
             <Image url="@../../../../../../../../Desktop/uugai.com-1626842107898.png" />
          </image>

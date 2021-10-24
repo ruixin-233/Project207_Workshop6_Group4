@@ -2,7 +2,7 @@
  * Sample Skeleton for 'main-menu.fxml' Controller Class
  */
 
-package com.example.project207_workshop6_group4;
+package com.example.project207_workshop6_group4.Controllers;
 
 import com.jfoenix.controls.JFXButton;
 import java.net.URL;

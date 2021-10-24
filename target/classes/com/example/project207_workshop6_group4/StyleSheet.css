@@ -1,4 +1,4 @@
-﻿.button:hover{
+﻿.button:focused{
     -fx-background-color: #ffffff;
     -fx-text-fill: #2b82b4;
     -fx-text-alignment: center;

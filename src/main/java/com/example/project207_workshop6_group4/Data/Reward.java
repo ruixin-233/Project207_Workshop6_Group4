@@ -1,4 +1,4 @@
-package com.example.project207_workshop6_group4;
+package com.example.project207_workshop6_group4.Data;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
