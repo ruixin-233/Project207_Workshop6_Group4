@@ -1,0 +1,183 @@
+package com.example.project207_workshop6_group4;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Properties;
+import java.util.ResourceBundle;
+
+import com.example.project207_workshop6_group4.Data.CustomerRewards;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+public class CustomerRewardsController {
+
+    @FXML // ResourceBundle that was given to the FXMLLoader
+    private ResourceBundle resources;
+
+    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    private URL location;
+
+    @FXML // fx:id="btnAddReward"
+    private Button btnAddReward; // Value injected by FXMLLoader
+
+
+    @FXML // fx:id="tbvCustomerRewards"
+    private TableView<CustomerRewards> tbvCustomerRewards; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colCustomerId"
+    private TableColumn<CustomerRewards, Integer> colCustomerId; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colRewardId"
+    private TableColumn<CustomerRewards, Integer> colRewardId; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colRwdNumber"
+    private TableColumn<CustomerRewards, String> colRwdNumber; // Value injected by FXMLLoader
+
+    private ObservableList<CustomerRewards> data = FXCollections.observableArrayList();
+
+    @FXML // fx:id="cbCustomerId"
+    private ComboBox<?> cbCustomerId; // Value injected by FXMLLoader
+
+    @FXML
+        // This method is called by the FXMLLoader when initialization is complete
+    void initialize() {
+        assert btnAddReward != null : "fx:id=\"btnAddReward\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
+        assert tbvCustomerRewards != null : "fx:id=\"tbvCustomerRewards\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
+        assert colCustomerId != null : "fx:id=\"colCustomerId\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
+        assert colRewardId != null : "fx:id=\"colRewardId\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
+        assert colRwdNumber != null : "fx:id=\"colRwdNumber\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
+        assert cbCustomerId != null : "fx:id=\"cbCustomerId\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
+
+        //loadCustomer((Integer) CustomerRewardsController.this.cbCustomerId.getValue());
+
+        this.getCustomerIDs();
+
+        this.cbCustomerId.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent actionEvent) {
+                CustomerRewardsController.this.loadCustomer((Integer) CustomerRewardsController.this.cbCustomerId.getValue());
+
+            }
+        });
+
+        this.btnAddReward.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Parent root;
+                try {
+                    onOpenDialog((int) cbCustomerId.getValue());
+                    /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReward.fxml"));
+                    AddRewardController addRewardController = fxmlLoader.<AddRewardController>getController();
+                    addRewardController.setMainObservableList(data);
+                    addRewardController.setMainSelectedIndex(selectedIndex);
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(fxmlLoader.load());
+                    stage.setTitle("Add Reward");
+                    stage.setScene(scene);
+                    stage.show();
+                    // Hide this current window (if this is what you want)
+                    //((Node)(event.getSource())).getScene().getWindow().hide();*/
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+
+    private void loadCustomer(int customerId) {
+        String username = "";
+        String password = "";
+        String url = "";
+        try {
+            FileInputStream fis = new FileInputStream("c:\\connection.properties");
+            Properties p = new Properties();
+            p.load(fis);
+            username = (String) p.get("user");
+            password = (String) p.get("password");
+            url = (String) p.get("URL");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            //change name of database to travelexperts!!!
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            //Connection conn = DriverManager.getConnection(url, username, password);
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select distinct customerId, rewardId, rwdNumber  from Customers_Rewards where customerId = " + cbCustomerId.getSelectionModel().getSelectedItem());
+            ResultSetMetaData rsmd = rs.getMetaData();
+            System.out.println(rsmd.getColumnCount());
+            tbvCustomerRewards.getItems().clear();
+            while (rs.next()) {
+                data.add(new CustomerRewards(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+                colCustomerId.setCellValueFactory(new PropertyValueFactory<CustomerRewards, Integer>("customerId"));
+                colRewardId.setCellValueFactory((new PropertyValueFactory<CustomerRewards, Integer>("rewardId")));
+                colRwdNumber.setCellValueFactory(new PropertyValueFactory<CustomerRewards, String>("rwdNumber"));
+                tbvCustomerRewards.setItems(data);
+
+            }
+            conn.close();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    private void getCustomerIDs() {
+        ArrayList custData = new ArrayList();
+
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select CustomerId from customers_rewards");
+            ResultSetMetaData rsmd = rs.getMetaData();
+            System.out.println(rsmd.getColumnCount());
+
+            while (rs.next()) {
+                custData.add(rs.getInt("CustomerId"));
+            }
+
+            Collections.sort(custData);
+            this.cbCustomerId.getItems().addAll(custData);
+        } catch (SQLException var6) {
+            var6.printStackTrace();
+        }
+
+    }
+
+
+    private void onOpenDialog(int selectedIndex) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReward.fxml"));
+        Parent parent = fxmlLoader.load();
+        AddRewardController dialogController = fxmlLoader.<AddRewardController>getController();
+        dialogController.setMainObservableList(data);
+        dialogController.setMainSelectedIndex(selectedIndex);
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+
+
+    }
+}
+
+

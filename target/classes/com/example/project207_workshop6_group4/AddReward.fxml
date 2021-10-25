@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="347.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.AddRewardController">
+   <children>
+      <ComboBox fx:id="cbRewardId" layoutX="102.0" layoutY="127.0" prefWidth="150.0" promptText="Reward ID" />
+      <ComboBox fx:id="cbRwdNumber" layoutX="102.0" layoutY="202.0" prefWidth="150.0" promptText="Reward Number" />
+      <TextField fx:id="tfCustomerId" editable="false" layoutX="146.0" layoutY="40.0" prefHeight="26.0" prefWidth="62.0" />
+      <Button fx:id="btnSave" layoutX="140.0" layoutY="272.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="76.0" text="Save" />
+   </children>
+</AnchorPane>

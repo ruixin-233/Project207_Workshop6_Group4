@@ -65,7 +65,7 @@ public class MainController {
     @FXML
     void btnRewardsClicked(MouseEvent event) {
         try {
-            OpenDialog("");
+            OpenDialog("CustomerRewards.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,7 +75,7 @@ public class MainController {
     @FXML
     void btnRewardsPressed(KeyEvent event) {
         try {
-            OpenDialog("");
+            OpenDialog("CustomerRewards.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -102,7 +102,6 @@ public class MainController {
     private void OpenDialog(String fxml) throws IOException {
         FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource(fxml));
         Parent parent = fmxLoader.load();
-        CustomerController dialogController = fmxLoader.<CustomerController>getController();
         Scene scene = new Scene(parent);
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
