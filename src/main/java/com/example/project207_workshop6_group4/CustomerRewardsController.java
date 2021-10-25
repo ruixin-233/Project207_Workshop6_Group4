@@ -173,7 +173,7 @@ public class CustomerRewardsController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReward.fxml"));
         Parent parent = fxmlLoader.load();
         AddRewardController dialogController = fxmlLoader.<AddRewardController>getController();
-        dialogController.setMainObservableList(data);
+        //dialogController.setMainObservableList(data);
         dialogController.setMainSelectedIndex(selectedIndex);
         Scene scene = new Scene(parent);
         Stage stage = new Stage();

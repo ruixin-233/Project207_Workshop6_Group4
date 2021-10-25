@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class AddRewardController {
 
@@ -36,14 +37,14 @@ public class AddRewardController {
     @FXML // fx:id="btnSave"
     private Button btnSave; // Value injected by FXMLLoader
 
-    private ObservableList<CustomerRewards> mainData;
+    //private ObservableList<CustomerRewards> mainData;
     private int selectedIndex;
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
         assert cbRewardId != null : "fx:id=\"cbRewardId\" was not injected: check your FXML file 'AddReward.fxml'.";
         assert cbRwdNumber != null : "fx:id=\"cbRwdNumber\" was not injected: check your FXML file 'AddReward.fxml'.";
-        assert tfCustomerId != null : "fx:id=\"tfCustomerId\" was not injected: check your FXML file 'AddReward.fxml'.";
+        assert cbRwdNumber != null : "fx:id=\"cbRwdNumber\" was not injected: check your FXML file 'AddReward.fxml'.";
         assert btnSave != null : "fx:id=\"btnSave\" was not injected: check your FXML file 'AddReward.fxml'.";
 
         this.getRewardIDs(AddRewardController.this.cbRewardId.getValue());
@@ -60,8 +61,8 @@ public class AddRewardController {
     private void btnSaveClicked(MouseEvent mouseEvent) {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
-            PreparedStatement stmt = conn.prepareStatement("UPDATE `customers_rewards` SET `RewardId`=?,`RwdNumber`=? WHERE `CustomerId`=?");
-            stmt.setInt(1, (Integer) this.cbRewardId.getValue());
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO `customers_rewards`(`RewardId`, `RwdNumber`, `CustomerId`) VALUES (?, ?, ?)");
+            stmt.setInt(1, (Integer)this.cbRewardId.getValue());
             stmt.setString(2, (String)this.cbRwdNumber.getValue());
             stmt.setInt(3, Integer.parseInt(this.tfCustomerId.getText()));
             int numRows = stmt.executeUpdate();
@@ -116,9 +117,9 @@ public class AddRewardController {
         }
     }
 
-    public void setMainObservableList(ObservableList<CustomerRewards> data) {
-        this.mainData = data;
-    }
+//    public void setMainObservableList(ObservableList<CustomerRewards> data) {
+//        this.mainData = data;
+//    }
 
     public void setMainSelectedIndex(int selectedIndex) {
         this.selectedIndex = selectedIndex;
@@ -126,4 +127,5 @@ public class AddRewardController {
 
         tfCustomerId.setText(selectedIndex + "");
     }
+
 }
