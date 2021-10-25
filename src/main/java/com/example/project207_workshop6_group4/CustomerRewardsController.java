@@ -72,8 +72,7 @@ public class CustomerRewardsController {
 
         this.cbCustomerId.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent actionEvent) {
-                CustomerRewardsController.this.loadCustomer((Integer) CustomerRewardsController.this.cbCustomerId.getValue());
-
+                CustomerRewardsController.this.loadCustomer();
             }
         });
 
@@ -103,8 +102,8 @@ public class CustomerRewardsController {
     }
 
 
-    private void loadCustomer(int customerId) {
-        String username = "";
+    private void loadCustomer() {
+/*        String username = "";
         String password = "";
         String url = "";
         try {
@@ -116,15 +115,20 @@ public class CustomerRewardsController {
             url = (String) p.get("URL");
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         try {
             //change name of database to travelexperts!!!
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
             //Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select distinct customerId, rewardId, rwdNumber  from Customers_Rewards where customerId = " + cbCustomerId.getSelectionModel().getSelectedItem());
+            ResultSet rs;
+            if (cbCustomerId.getSelectionModel().getSelectedItem().equals("All")) {
+                rs = stmt.executeQuery("select *  from Customers_Rewards");
+            }
+            else{
+                rs = stmt.executeQuery("select *  from Customers_Rewards where customerId = " + cbCustomerId.getSelectionModel().getSelectedItem());
+            }
             ResultSetMetaData rsmd = rs.getMetaData();
-            System.out.println(rsmd.getColumnCount());
             tbvCustomerRewards.getItems().clear();
             while (rs.next()) {
                 data.add(new CustomerRewards(rs.getInt(1), rs.getInt(2), rs.getString(3)));
@@ -143,24 +147,25 @@ public class CustomerRewardsController {
 
     private void getCustomerIDs() {
         ArrayList custData = new ArrayList();
+        ArrayList all = new ArrayList();
 
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select CustomerId from customers_rewards");
+            ResultSet rs = stmt.executeQuery("select CustomerId from customers"); // Add all existing customer id to combobox
             ResultSetMetaData rsmd = rs.getMetaData();
-            System.out.println(rsmd.getColumnCount());
 
             while (rs.next()) {
                 custData.add(rs.getInt("CustomerId"));
             }
 
+            all.add("All");
             Collections.sort(custData);
+            this.cbCustomerId.getItems().addAll(all);
             this.cbCustomerId.getItems().addAll(custData);
         } catch (SQLException var6) {
             var6.printStackTrace();
         }
-
     }
 
 
@@ -175,8 +180,6 @@ public class CustomerRewardsController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
-
-
     }
 }
 
