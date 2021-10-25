@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Project207_Workshop6_Group4" />
+        <module name="Project207_Workshop6_Group4-Alishea" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Project207_Workshop6_Group4" target="16" />
+      <module name="Project207_Workshop6_Group4-Alishea" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -79,7 +79,6 @@ public class CustomerController {
                 }
             }
         });
-
     }
 
     private void onOpenDialog(int selectedIndex) throws IOException {
@@ -101,7 +100,6 @@ public class CustomerController {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from customers");
             ResultSetMetaData rsmd = rs.getMetaData();
-            System.out.println(rsmd.getColumnCount());
 
             while (rs.next())
             {

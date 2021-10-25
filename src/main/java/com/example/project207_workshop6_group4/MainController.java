@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -46,14 +47,16 @@ public class MainController {
     @FXML
     void btnCustomersClicked(MouseEvent event) {
         try {
-            FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-list.fxml"));
-            Parent parent = fmxLoader.load();
-            CustomerController dialogController = fmxLoader.<CustomerController>getController();
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
+            OpenDialog("customer-list.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void btnCustomersPressed(KeyEvent event) {
+        try {
+            OpenDialog("customer-list.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -62,14 +65,17 @@ public class MainController {
     @FXML
     void btnRewardsClicked(MouseEvent event) {
         try {
-            FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-list.fxml"));
-            Parent parent = fmxLoader.load();
-            CustomerController dialogController = fmxLoader.<CustomerController>getController();
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
+            OpenDialog("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    void btnRewardsPressed(KeyEvent event) {
+        try {
+            OpenDialog("");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,16 +84,29 @@ public class MainController {
     @FXML
     void btnSponsorsClicked(MouseEvent event) {
         try {
-            FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-list.fxml"));
-            Parent parent = fmxLoader.load();
-            CustomerController dialogController = fmxLoader.<CustomerController>getController();
-            Scene scene = new Scene(parent);
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
+            OpenDialog("");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    void btnSponsorsPressed(KeyEvent event) {
+        try {
+            OpenDialog("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void OpenDialog(String fxml) throws IOException {
+        FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource(fxml));
+        Parent parent = fmxLoader.load();
+        CustomerController dialogController = fmxLoader.<CustomerController>getController();
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 }
