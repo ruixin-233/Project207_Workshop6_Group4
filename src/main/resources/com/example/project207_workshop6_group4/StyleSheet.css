@@ -1,4 +1,10 @@
-﻿.button:hover{
+﻿/*
+Author: Laura Luo
+Date: Oct 24- 2021
+Project 207 - Workshop6
+ */
+
+.button:hover{
     -fx-background-color: #ffffff;
     -fx-text-fill: #2b82b4;
     -fx-text-alignment: center;
@@ -9,55 +15,91 @@
     -fx-text-fill: #2b82b4;
 }
 
-.text-area {
+.combo-box{
+    -fx-background-color: #ebf7fa;
+}
+
+
+/*
+Table View Styling
+Reference: https://stackoverflow.com/questions/33938811/styling-a-tableview-in-css-javafx
+*/
+
+.table-view{
+    -fx-background-color: transparent;
+    -fx-border-color: #98d7e6;
+}
+
+.table-view:focused {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: #d6eff4;
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: #2b82b4;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell{
+    -fx-text-fill: black;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #ebf7fa;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #98d7e6;
     -fx-background-insets: 0;
-    -fx-background-color: transparent, white, transparent, white;
-    -fx-background-radius: 0, 0, 0, 0;
-
-    -fx-box-border: none;
-    -fx-focus-color: -fx-control-inner-background;
-    -fx-faint-focus-color: -fx-control-inner-background;
-    -fx-text-box-border: -fx-control-inner-background;
-    -fx-border-width: -1;
+    -fx-background-radius: 1;
 }
 
-.text-area .content {
-    -fx-background-color: transparent, white, transparent, white;
+
+/*
+Set scroll bar color
+ */
+.table-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color: #d6eff4;
 }
 
-.text-area:focused .content {
-    -fx-background-color: transparent, white, transparent, white;
+/*
+Hide Horizontal Scroll Bar
+Reference: https://stackoverflow.com/questions/12670137/how-to-hide-the-horizontal-scrollbar-of-a-listview-in-javafx
+*/
+
+.table-view .scroll-bar:horizontal .increment-arrow,
+.table-view .scroll-bar:horizontal .decrement-arrow,
+.table-view .scroll-bar:horizontal .increment-button,
+.table-view .scroll-bar:horizontal .decrement-button {
+    -fx-padding:0;
 }
 
-.scroll-pane {
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
 }
 
-.viewport {
-    -fx-background-insets: 0;
-    -fx-background-color: transparent, white, transparent, white;
-    -fx-background-radius: 0, 0, 0, 0;
-
-    -fx-focus-color: -fx-control-inner-background;
-    -fx-faint-focus-color: -fx-control-inner-background;
-    -fx-text-box-border: -fx-control-inner-background;
-    -fx-border-width: -1;
-}
-
-.content {
-}
-
-.text {
-}
-
-.text-area:focused {
-    -fx-highlight-fill: #7ecfff;
-
-    -fx-background-insets: 0;
-    -fx-background-color: transparent, white, transparent, white;
-    -fx-background-radius: 0, 0, 0, 0;
-
-    -fx-focus-color: -fx-control-inner-background;
-    -fx-faint-focus-color: -fx-control-inner-background;
-    -fx-text-box-border: -fx-control-inner-background;
-    -fx-border-width: -1;
+.table-view .virtual-flow .scroll-bar .increment-button,
+.table-view .virtual-flow .scroll-bar .decrement-button {
+    -fx-border-color: transparent;
+    -fx-opacity: 0;
 }
