@@ -188,7 +188,7 @@ public class AddRewardController {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("reward-gui-view.fxml"));
                 Stage secondWindow = new Stage();
-                Scene scene = new Scene(fxmlLoader.load(), 502, 286);
+                Scene scene = new Scene(fxmlLoader.load(), 600, 500);
                 secondWindow.setTitle("Reward Manager");
                 secondWindow.setScene(scene);
                 secondWindow.show();

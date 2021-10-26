@@ -1,3 +1,7 @@
+/*
+Author: Alishea
+ */
+
 package com.example.project207_workshop6_group4;
 
 import java.io.IOException;
@@ -16,14 +20,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
+import javafx.stage.PopupWindow;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 public class CustomerRewardsController {
 
@@ -49,6 +52,15 @@ public class CustomerRewardsController {
     @FXML // fx:id="colRwdNumber"
     private TableColumn<CustomerRewards, String> colRwdNumber; // Value injected by FXMLLoader
 
+    @FXML // fx:id="btnCustomerDetial"
+    private Button btnCustomerDetial; // Value injected by FXMLLoader
+
+    @FXML // fx:id="btnCustomersInfo"
+    private Button btnCustomersTable; // Value injected by FXMLLoader
+
+    @FXML // fx:id="lblAlert"
+    private Label lblAlert; // Value injected by FXMLLoader
+
     private ObservableList<CustomerRewards> data = FXCollections.observableArrayList();
 
     @FXML // fx:id="cbCustomerId"
@@ -63,6 +75,9 @@ public class CustomerRewardsController {
         assert colRewardId != null : "fx:id=\"colRewardId\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
         assert colRwdNumber != null : "fx:id=\"colRwdNumber\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
         assert cbCustomerId != null : "fx:id=\"cbCustomerId\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
+        assert btnCustomerDetial != null : "fx:id=\"btnCustomerDetial\" was not injected: check your FXML file 'customer-rewards.fxml'.";
+        assert btnCustomersTable != null : "fx:id=\"btnCustomersInfo\" was not injected: check your FXML file 'customer-rewards.fxml'.";
+        assert lblAlert != null : "fx:id=\"lblAlert\" was not injected: check your FXML file 'customer-rewards.fxml'.";
 
         //loadCustomer((Integer) CustomerRewardsController.this.cbCustomerId.getValue());
 
@@ -77,9 +92,16 @@ public class CustomerRewardsController {
         this.btnAddReward.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                Parent root;
-                try {
-                    onOpenDialog((int) cbCustomerId.getValue());
+                //Parent root;
+                if (cbCustomerId.getSelectionModel().isEmpty() == true || cbCustomerId.getSelectionModel().getSelectedItem().equals("All"))
+                {
+                    // Add alert message when "All" or nothing is selected - Laura
+                    lblAlert.setText("Please select a customer");
+                }
+                else {
+                    lblAlert.setText("");
+                    try {
+                        onOpenDialog((int) cbCustomerId.getValue());
                     /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReward.fxml"));
                     AddRewardController addRewardController = fxmlLoader.<AddRewardController>getController();
                     addRewardController.setMainObservableList(data);
@@ -91,14 +113,29 @@ public class CustomerRewardsController {
                     stage.show();
                     // Hide this current window (if this is what you want)
                     //((Node)(event.getSource())).getScene().getWindow().hide();*/
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
-
     }
 
+    @FXML
+    void btnCustomersTableClicked(MouseEvent event) {
+        FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-list.fxml"));
+        Parent parent = null;
+        try {
+            parent = fmxLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(parent);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
 
     private void loadCustomer() {
 /*        String username = "";
@@ -131,7 +168,7 @@ public class CustomerRewardsController {
             while (rs.next()) {
                 data.add(new CustomerRewards(rs.getInt(1), rs.getString(2), rs.getString(3)));
                 colCustomerId.setCellValueFactory(new PropertyValueFactory<CustomerRewards, Integer>("customerId"));
-                colRewardId.setCellValueFactory((new PropertyValueFactory<CustomerRewards, String>("rwdDesc")));    // Rewards Table updated: RewardID field is removed
+                colRewardId.setCellValueFactory((new PropertyValueFactory<CustomerRewards, String>("rwdDesc")));    // Rewards Table updated: RewardID field is removed - Laura
                 colRwdNumber.setCellValueFactory(new PropertyValueFactory<CustomerRewards, String>("rwdNumber"));
                 tbvCustomerRewards.setItems(data);
 
@@ -150,7 +187,7 @@ public class CustomerRewardsController {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "user", "password");
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select CustomerId from customers"); // Add all existing customer id to combobox
+            ResultSet rs = stmt.executeQuery("select CustomerId from customers"); // Add all existing customer id to combobox - Laura
             ResultSetMetaData rsmd = rs.getMetaData();
 
             while (rs.next()) {

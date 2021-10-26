@@ -65,7 +65,7 @@ public class MainController {
     @FXML
     void btnRewardsClicked(MouseEvent event) {
         try {
-            OpenDialog("customer-rewards.fxml");
+            OpenDialog("reward-gui-view.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,7 +75,7 @@ public class MainController {
     @FXML
     void btnRewardsPressed(KeyEvent event) {
         try {
-            OpenDialog("customer-rewards.fxml");
+            OpenDialog("reward-gui-view.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -84,7 +84,7 @@ public class MainController {
     @FXML
     void btnSponsorsClicked(MouseEvent event) {
         try {
-            OpenDialog("reward-gui-view.fxml");
+            OpenDialog("customer-rewards.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,7 +93,7 @@ public class MainController {
     @FXML
     void btnSponsorsPressed(KeyEvent event) {
         try {
-            OpenDialog("reward-gui-view.fxml");
+            OpenDialog("customer-rewards.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }

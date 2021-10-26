@@ -21,17 +21,17 @@
    <children>
       <Button fx:id="btnSaveReward" layoutX="253.0" layoutY="397.0" mnemonicParsing="false" onMouseClicked="#onSaveButtonClick" prefHeight="30.0" prefWidth="94.0" text="Save">
          <font>
-            <Font name="Arial Bold" size="14.0" />
+            <Font name="Arial Bold" size="13.0" />
          </font>
       </Button>
       <Button fx:id="btnEditReward" layoutX="73.0" layoutY="397.0" mnemonicParsing="false" onMouseClicked="#onEditButtonClick" prefHeight="30.0" prefWidth="94.0" text="Edit">
          <font>
-            <Font name="Arial Bold" size="14.0" />
+            <Font name="Arial Bold" size="13.0" />
          </font>
       </Button>
       <Button fx:id="btnAddReward" layoutX="432.0" layoutY="397.0" mnemonicParsing="false" onMouseClicked="#onAddButtonClick" prefHeight="30.0" prefWidth="94.0" text="Add">
          <font>
-            <Font name="Arial Bold" size="14.0" />
+            <Font name="Arial Bold" size="13.0" />
          </font>
       </Button>
       <HBox layoutX="73.0" layoutY="195.0" prefHeight="176.0" prefWidth="453.0">
