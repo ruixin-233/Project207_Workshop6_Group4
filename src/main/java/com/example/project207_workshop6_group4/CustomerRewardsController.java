@@ -1,12 +1,10 @@
 package com.example.project207_workshop6_group4;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Properties;
 import java.util.ResourceBundle;
 
 import com.example.project207_workshop6_group4.Data.CustomerRewards;
@@ -46,7 +44,7 @@ public class CustomerRewardsController {
     private TableColumn<CustomerRewards, Integer> colCustomerId; // Value injected by FXMLLoader
 
     @FXML // fx:id="colRewardId"
-    private TableColumn<CustomerRewards, Integer> colRewardId; // Value injected by FXMLLoader
+    private TableColumn<CustomerRewards, String> colRewardId; // Value injected by FXMLLoader
 
     @FXML // fx:id="colRwdNumber"
     private TableColumn<CustomerRewards, String> colRwdNumber; // Value injected by FXMLLoader
@@ -118,22 +116,22 @@ public class CustomerRewardsController {
         }*/
         try {
             //change name of database to travelexperts!!!
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "user", "password");
             //Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
             ResultSet rs;
             if (cbCustomerId.getSelectionModel().getSelectedItem().equals("All")) {
-                rs = stmt.executeQuery("select *  from Customers_Rewards");
+                rs = stmt.executeQuery("select CustomerID, r.RwdNumber, RwdDesc  from Customers_Rewards cr JOIN Rewards r ON cr.RwdNumber = r.RwdNumber");
             }
             else{
-                rs = stmt.executeQuery("select *  from Customers_Rewards where customerId = " + cbCustomerId.getSelectionModel().getSelectedItem());
+                rs = stmt.executeQuery("select CustomerID, r.RwdNumber, RwdDesc  from Customers_Rewards cr JOIN Rewards r ON cr.RwdNumber = r.RwdNumber where customerId = " + cbCustomerId.getSelectionModel().getSelectedItem());
             }
-            ResultSetMetaData rsmd = rs.getMetaData();
+            //ResultSetMetaData rsmd = rs.getMetaData();
             tbvCustomerRewards.getItems().clear();
             while (rs.next()) {
-                data.add(new CustomerRewards(rs.getInt(1), rs.getInt(2), rs.getString(3)));
+                data.add(new CustomerRewards(rs.getInt(1), rs.getString(2), rs.getString(3)));
                 colCustomerId.setCellValueFactory(new PropertyValueFactory<CustomerRewards, Integer>("customerId"));
-                colRewardId.setCellValueFactory((new PropertyValueFactory<CustomerRewards, Integer>("rewardId")));
+                colRewardId.setCellValueFactory((new PropertyValueFactory<CustomerRewards, String>("rwdDesc")));    // Rewards Table updated: RewardID field is removed
                 colRwdNumber.setCellValueFactory(new PropertyValueFactory<CustomerRewards, String>("rwdNumber"));
                 tbvCustomerRewards.setItems(data);
 
@@ -150,7 +148,7 @@ public class CustomerRewardsController {
         ArrayList all = new ArrayList();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "user", "password");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select CustomerId from customers"); // Add all existing customer id to combobox
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -170,9 +168,9 @@ public class CustomerRewardsController {
 
 
     private void onOpenDialog(int selectedIndex) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddReward.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddRewardtoCustomer.fxml"));
         Parent parent = fxmlLoader.load();
-        AddRewardController dialogController = fxmlLoader.<AddRewardController>getController();
+        AddRewardtoCustomerController dialogController = fxmlLoader.<AddRewardtoCustomerController>getController();
         //dialogController.setMainObservableList(data);
         dialogController.setMainSelectedIndex(selectedIndex);
         Scene scene = new Scene(parent);

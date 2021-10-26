@@ -6,22 +6,22 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="496.0" prefWidth="486.0" style="-fx-background-color: white;" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.CustomerRewardsController">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.CustomerRewardsController">
    <children>
-      <Button fx:id="btnAddReward" layoutX="343.0" layoutY="416.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Add Reward" />
-      <TableView fx:id="tbvCustomerRewards" layoutX="38.0" layoutY="108.0" prefHeight="280.0" prefWidth="410.0">
+      <Button fx:id="btnAddReward" layoutX="453.0" layoutY="416.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Add Reward" />
+      <TableView fx:id="tbvCustomerRewards" layoutX="43.0" layoutY="110.0" prefHeight="280.0" prefWidth="513.0">
         <columns>
-          <TableColumn fx:id="colCustomerId" prefWidth="75.0" text="Customer ID" />
-          <TableColumn fx:id="colRewardId" prefWidth="75.0" text="Reward ID" />
-            <TableColumn fx:id="colRwdNumber" prefWidth="75.0" text="Reward Number" />
+          <TableColumn fx:id="colCustomerId" maxWidth="2500.0" prefWidth="103.199951171875" text="Customer ID" />
+            <TableColumn fx:id="colRwdNumber" prefWidth="129.5999755859375" text="Reward Number" />
+          <TableColumn fx:id="colRewardId" prefWidth="225.60003662109375" text="Reward Description" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ComboBox fx:id="cbCustomerId" layoutX="38.0" layoutY="49.0" prefHeight="26.0" prefWidth="109.0" promptText="Customer ID" />
-      <Button fx:id="btnAddReward1" layoutX="38.0" layoutY="416.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="New Reward" />
-      <Button fx:id="btnAddReward11" layoutX="192.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Customer Info" />
-      <Button fx:id="btnAddReward111" layoutX="344.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Customers" />
+      <ComboBox fx:id="cbCustomerId" layoutX="43.0" layoutY="51.0" prefHeight="26.0" prefWidth="109.0" promptText="Customer ID" />
+      <Button fx:id="btnAddReward1" layoutX="42.0" layoutY="416.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" text="New Reward" />
+      <Button fx:id="btnAddReward11" layoutX="248.0" layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Customer Info" />
+      <Button fx:id="btnAddReward111" layoutX="453.0" layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Customers" />
    </children>
 </AnchorPane>

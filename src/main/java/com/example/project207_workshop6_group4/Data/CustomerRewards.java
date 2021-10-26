@@ -5,14 +5,26 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class CustomerRewards {
     private SimpleIntegerProperty customerId;
-    private SimpleIntegerProperty rewardId;
     private SimpleStringProperty rwdNumber;
+    private SimpleStringProperty rwdDesc;
 
 
-    public CustomerRewards(int customerId, int rewardId, String rwdNumber) {
+    public CustomerRewards(int customerId, String rwdNumber, String rwdDesc) {
         this.customerId = new SimpleIntegerProperty(customerId);
-        this.rewardId = new SimpleIntegerProperty(rewardId);
         this.rwdNumber = new SimpleStringProperty(rwdNumber);
+        this.rwdDesc = new SimpleStringProperty(rwdDesc);
+    }
+
+    public String getRwdDes() {
+        return rwdDesc.get();
+    }
+
+    public SimpleStringProperty rwdDescProperty() {
+        return rwdDesc;
+    }
+
+    public void setRwdDesc(String rwdDesc) {
+        this.rwdDesc.set(rwdDesc);
     }
 
     public int getCustomerId() {
@@ -27,17 +39,11 @@ public class CustomerRewards {
         this.customerId.set(customerId);
     }
 
-    public int getRewardId() {
-        return rewardId.get();
-    }
+    //public int getRewardId() { return rewardId.get(); }
 
-    public SimpleIntegerProperty rewardIdProperty() {
-        return rewardId;
-    }
+    //public SimpleIntegerProperty rewardIdProperty() { return rewardId; }
 
-    public void setRewardId(int rewardId) {
-        this.rewardId.set(rewardId);
-    }
+    //public void setRewardId(int rewardId) { this.rewardId.set(rewardId); }
 
     public String getRwdNumber() {
         return rwdNumber.get();

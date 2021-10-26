@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="347.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.AddRewardController">
+<AnchorPane prefHeight="347.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.AddRewardtoCustomerController">
    <children>
       <ComboBox fx:id="cbRewardId" layoutX="102.0" layoutY="127.0" prefWidth="150.0" promptText="Reward ID" />
       <ComboBox fx:id="cbRwdNumber" layoutX="102.0" layoutY="202.0" prefWidth="150.0" promptText="Reward Number" />
