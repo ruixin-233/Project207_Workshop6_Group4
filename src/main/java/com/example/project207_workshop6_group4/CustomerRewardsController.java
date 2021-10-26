@@ -168,7 +168,7 @@ public class CustomerRewardsController {
 
 
     private void onOpenDialog(int selectedIndex) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddRewardtoCustomer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("add-reward-to-customer.fxml"));
         Parent parent = fxmlLoader.load();
         AddRewardtoCustomerController dialogController = fxmlLoader.<AddRewardtoCustomerController>getController();
         //dialogController.setMainObservableList(data);

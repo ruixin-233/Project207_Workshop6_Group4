@@ -56,7 +56,7 @@ public class AddRewardtoCustomerController {
 
     private void btnSaveClicked(MouseEvent mouseEvent) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "user", "password");
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO `customers_rewards`(`RwdNumber`, `CustomerId`) VALUES (?, ?)");
             //stmt.setInt(1, (Integer)this.cbRewardId.getValue());
             stmt.setString(1, (String)this.cbRwdNumber.getValue());
