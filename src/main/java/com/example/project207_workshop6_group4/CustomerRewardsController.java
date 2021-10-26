@@ -52,11 +52,14 @@ public class CustomerRewardsController {
     @FXML // fx:id="colRwdNumber"
     private TableColumn<CustomerRewards, String> colRwdNumber; // Value injected by FXMLLoader
 
-    @FXML // fx:id="btnCustomerDetial"
-    private Button btnCustomerDetial; // Value injected by FXMLLoader
+    @FXML // fx:id="btnSponsorsTable"
+    private Button btnSponsorsTable; // Value injected by FXMLLoader
 
     @FXML // fx:id="btnCustomersInfo"
     private Button btnCustomersTable; // Value injected by FXMLLoader
+
+    @FXML // fx:id="btnCustomerDetails"
+    private Button btnCustomerDetails; // Value injected by FXMLLoader
 
     @FXML // fx:id="lblAlert"
     private Label lblAlert; // Value injected by FXMLLoader
@@ -75,7 +78,7 @@ public class CustomerRewardsController {
         assert colRewardId != null : "fx:id=\"colRewardId\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
         assert colRwdNumber != null : "fx:id=\"colRwdNumber\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
         assert cbCustomerId != null : "fx:id=\"cbCustomerId\" was not injected: check your FXML file 'CustomerRewards.fxml'.";
-        assert btnCustomerDetial != null : "fx:id=\"btnCustomerDetial\" was not injected: check your FXML file 'customer-rewards.fxml'.";
+        assert btnCustomerDetails != null : "fx:id=\"btnCustomerDetails\" was not injected: check your FXML file 'customer-rewards.fxml'.";
         assert btnCustomersTable != null : "fx:id=\"btnCustomersInfo\" was not injected: check your FXML file 'customer-rewards.fxml'.";
         assert lblAlert != null : "fx:id=\"lblAlert\" was not injected: check your FXML file 'customer-rewards.fxml'.";
 
@@ -121,20 +124,63 @@ public class CustomerRewardsController {
         });
     }
 
+    // Laura
+    @FXML
+    void btnCustomerDetails(MouseEvent event) {
+        if (cbCustomerId.getSelectionModel().isEmpty() == true || cbCustomerId.getSelectionModel().getSelectedItem().equals("All"))
+        {
+            // Add alert message when "All" or nothing is selected - Laura
+            lblAlert.setText("Please select a customer");
+        }
+        else {
+            lblAlert.setText("");
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("customer-details.fxml"));
+                Parent parent = fxmlLoader.load();
+                CustomerDetailController dialogController = fxmlLoader.<CustomerDetailController>getController();
+                dialogController.setCboMainSelectedIndex((int) cbCustomerId.getValue());
+                Scene scene = new Scene(parent);
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setScene(scene);
+                stage.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    // Laura
     @FXML
     void btnCustomersTableClicked(MouseEvent event) {
-        FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-list.fxml"));
-        Parent parent = null;
         try {
+            FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource("customer-list.fxml"));
+            Parent parent = null;
             parent = fmxLoader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Scene scene = new Scene(parent);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
+    }
+
+    @FXML
+    void btnSponsorsTableClicked(MouseEvent event) {
+        try {
+            FXMLLoader fmxLoader = new FXMLLoader(getClass().getResource(""));
+            Parent parent = null;
+            parent = fmxLoader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadCustomer() {

@@ -165,4 +165,30 @@ public class CustomerDetailController {
         tfCustEmail.setText(c.getCustEmail());
         tfAgentId.setText(c.getAgentId() + "");
     }
+
+    // Retrieve selected index from customer-rewards.fxml drop down list (Customer Reward Controller)
+    public void setCboMainSelectedIndex(int value) {
+        this.selectedIndex = value;
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from Customers where CustomerId = " + selectedIndex);
+            if (rs.next()){
+                cbCustomerID.setValue(selectedIndex);
+                tfCustFirstName.setText(rs.getString(("CustFirstName")));
+                tfCustLastName.setText(rs.getString(("CustLastName")));
+                tfCustAddress.setText(rs.getString(("CustAddress")));
+                tfCustCity.setText(rs.getString(("CustCity")));
+                tfCustProv.setText(rs.getString(("CustProv")));
+                tfCustPostal.setText(rs.getString(("CustPostal")));
+                tfCustCountry.setText(rs.getString(("CustCountry")));
+                tfCustHomePhone.setText(rs.getString(("CustHomePhone")));
+                tfCustBusPhone.setText(rs.getString(("CustBusPhone")));
+                tfCustEmail.setText(rs.getString(("CustEmail")));
+                tfAgentId.setText(rs.getInt("AgentId") + "");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

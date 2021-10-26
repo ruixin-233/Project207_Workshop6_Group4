@@ -18,6 +18,11 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.AddRewardController">
    <children>
+      <ImageView fitHeight="115.0" fitWidth="200.0" layoutX="200.0" layoutY="42.0">
+         <image>
+            <Image url="@TravelExpertsLogo.png" />
+         </image>
+      </ImageView>
       <HBox layoutX="73.0" layoutY="195.0" prefHeight="176.0" prefWidth="453.0">
          <children>
             <VBox prefHeight="194.0" prefWidth="192.0">
@@ -92,10 +97,5 @@
             <Font name="Arial Bold" size="13.0" />
          </font>
       </Button>
-      <ImageView fitHeight="115.0" fitWidth="200.0" layoutX="200.0" layoutY="42.0">
-         <image>
-            <Image url="@TravelExpertsLogo.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

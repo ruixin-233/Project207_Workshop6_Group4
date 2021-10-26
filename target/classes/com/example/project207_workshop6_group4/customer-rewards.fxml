@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -14,7 +16,7 @@
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
-      <TableView fx:id="tbvCustomerRewards" layoutX="43.0" layoutY="110.0" prefHeight="280.0" prefWidth="513.0">
+      <TableView fx:id="tbvCustomerRewards" layoutX="43.0" layoutY="106.0" prefHeight="280.0" prefWidth="514.0">
         <columns>
           <TableColumn fx:id="colCustomerId" maxWidth="2500.0" prefWidth="103.199951171875" text="Customer ID" />
             <TableColumn fx:id="colRwdNumber" prefWidth="129.5999755859375" text="Reward Number" />
@@ -24,8 +26,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ComboBox fx:id="cbCustomerId" layoutX="121.0" layoutY="51.0" prefHeight="26.0" prefWidth="109.0" />
-      <Button fx:id="btnCustomerDetial" layoutX="453.0" layoutY="49.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Customer Info">
+      <ComboBox fx:id="cbCustomerId" layoutX="125.0" layoutY="51.0" prefHeight="26.0" prefWidth="116.0" />
+      <Button fx:id="btnSponsorsTable" layoutX="258.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#btnSponsorsTableClicked" prefHeight="30.0" prefWidth="104.0" text="Sponsors">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
@@ -34,6 +36,16 @@
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
       <Label layoutX="46.0" layoutY="56.0" text="CustomerID：" />
-      <Label fx:id="lblAlert" alignment="CENTER_RIGHT" layoutX="293.0" layoutY="423.0" prefHeight="18.0" prefWidth="150.0" textFill="RED" />
+      <Label fx:id="lblAlert" alignment="CENTER" layoutX="108.0" layoutY="24.0" prefHeight="18.0" prefWidth="150.0" textFill="RED" />
+      <ImageView fitHeight="38.0" fitWidth="200.0" layoutX="386.0" layoutY="14.0">
+         <image>
+            <Image url="@travelexperts.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnCustomerDetails" layoutX="241.0" layoutY="53.0" mnemonicParsing="false" onMouseClicked="#btnCustomerDetails" prefHeight="23.0" prefWidth="61.0" style="-fx-background-color: transparent;" text="Details">
+         <font>
+            <Font name="Arial Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

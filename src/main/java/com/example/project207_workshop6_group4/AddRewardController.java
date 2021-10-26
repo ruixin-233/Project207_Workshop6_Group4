@@ -7,12 +7,14 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
@@ -186,6 +188,10 @@ public class AddRewardController {
         if (isValid == true) {
             // Call the Reward GUI Manager again
             try {
+                /*final Node source = (Node) event.getSource();
+                final Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();*/
+
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("reward-gui-view.fxml"));
                 Stage secondWindow = new Stage();
                 Scene scene = new Scene(fxmlLoader.load(), 600, 500);

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxWidth="5500.0" prefHeight="500.0" prefWidth="600.0" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.CustomerController">
+<AnchorPane maxWidth="5500.0" prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.CustomerController">
    <children>
-      <TableView fx:id="tvCustomer" layoutX="14.0" prefHeight="500.0" prefWidth="571.0">
+      <TableView fx:id="tvCustomer" layoutX="14.0" layoutY="66.0" prefHeight="414.0" prefWidth="571.0">
         <columns>
           <TableColumn fx:id="colCustomerId" prefWidth="79.20001220703125" text="Customer ID" />
           <TableColumn fx:id="colCustFirstName" prefWidth="90.39996337890625" text="First Name" />
@@ -16,5 +19,11 @@
             <TableColumn fx:id="colAgentId" prefWidth="69.5999755859375" text="Agt ID" />
         </columns>
       </TableView>
+      <ImageView fitHeight="38.0" fitWidth="200.0" layoutX="385.0" layoutY="14.0">
+         <image>
+            <Image url="@travelexperts.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="14.0" layoutY="24.0" text="Select Customer to see Detail Information" textFill="#2b82b4" />
    </children>
 </AnchorPane>

@@ -15,6 +15,10 @@ Project 207 - Workshop6
     -fx-text-fill: #2b82b4;
 }
 
+.button:pressed{
+    -fx-background-color: #98d7e6;
+}
+
 .combo-box{
     -fx-background-color: #ebf7fa;
 }
