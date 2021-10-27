@@ -81,6 +81,8 @@ public class MainController {
         }
     }
 
+/*  Sponsor button removed from main menu
+
     @FXML
     void btnSponsorsClicked(MouseEvent event) {
         try {
@@ -98,6 +100,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
+*/
 
     private void OpenDialog(String fxml) throws IOException {
         FXMLLoader fxmlLoader;

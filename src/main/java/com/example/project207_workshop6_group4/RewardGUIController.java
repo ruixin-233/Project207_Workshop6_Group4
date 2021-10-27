@@ -1,3 +1,5 @@
+
+
 package com.example.project207_workshop6_group4;
 
 import com.example.project207_workshop6_group4.Data.Reward;
@@ -7,13 +9,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -47,6 +52,9 @@ public class RewardGUIController {
     @FXML // fx:id="btnEditReward"
     private Button btnEditReward; // Value injected by FXMLLoader
 
+    @FXML
+    private Button btnSponsorTable; // Value injected by FXMLLoader
+
     // Creating an Array List for the Reward Object data
     private ObservableList<Reward> rewardData = FXCollections.observableArrayList();
 
@@ -55,6 +63,26 @@ public class RewardGUIController {
 
     // Creating an Array List for the Sponsor ID combo box
     private ObservableList<Integer> dataSponsorID = FXCollections.observableArrayList();
+
+
+    // Laura Edited
+    // Added sponsor button to retrieve sponsor list
+    @FXML
+    void btnSponsorTableClicked(MouseEvent event) {
+        try {
+            FXMLLoader fxmlLoader;
+            fxmlLoader = new FXMLLoader(getClass().getResource("reward-sponsor.fxml"));
+            Parent parent = fxmlLoader.load();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * This is the onEditButtonClick method that handles the mouse click event for the Edit Button on the Reward GUI.

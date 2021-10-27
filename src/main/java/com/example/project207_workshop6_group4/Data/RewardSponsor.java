@@ -10,36 +10,36 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class RewardSponsor {
-    private SimpleIntegerProperty rwdSponsorId;
-    private SimpleStringProperty rwdSponsorName;
+    private SimpleIntegerProperty SponsorId;
+    private SimpleStringProperty SponsorName;
     //private SimpleStringProperty rwdDecription;
 
-    public RewardSponsor(int rwdSponsorId, String rwdSponsorName) {
-        this.rwdSponsorId = new SimpleIntegerProperty(rwdSponsorId);
-        this.rwdSponsorName = new SimpleStringProperty(rwdSponsorName);
+    public RewardSponsor(int SponsorId, String SponsorName) {
+        this.SponsorId = new SimpleIntegerProperty(SponsorId);
+        this.SponsorName = new SimpleStringProperty(SponsorName);
     }
 
-    public int getRwdSponsorId() {
-        return rwdSponsorId.get();
+    public int getSponsorId() {
+        return SponsorId.get();
     }
 
-    public SimpleIntegerProperty rwdSponsorIdProperty() {
-        return rwdSponsorId;
+    public SimpleIntegerProperty sponsorIdProperty() {
+        return SponsorId;
     }
 
-    public void setRwdSponsorId(int rwdSponsorId) {
-        this.rwdSponsorId.set(rwdSponsorId);
+    public void setSponsorId(int sponsorId) {
+        this.SponsorId.set(sponsorId);
     }
 
-    public String getRwdSponsorName() {
-        return rwdSponsorName.get();
+    public String getSponsorName() {
+        return SponsorName.get();
     }
 
-    public SimpleStringProperty rwdSponsorNameProperty() {
-        return rwdSponsorName;
+    public SimpleStringProperty sponsorNameProperty() {
+        return SponsorName;
     }
 
-    public void setRwdSponsorName(String rwdSponsorName) {
-        this.rwdSponsorName.set(rwdSponsorName);
+    public void setSponsorName(String sponsorName) {
+        this.SponsorName.set(sponsorName);
     }
 }

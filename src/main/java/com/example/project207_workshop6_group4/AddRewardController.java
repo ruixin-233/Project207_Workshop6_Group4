@@ -1,3 +1,5 @@
+
+
 package com.example.project207_workshop6_group4;
 
 import java.io.FileInputStream;
@@ -42,7 +44,7 @@ public class AddRewardController {
     @FXML // fx:id="txtRwdNumberAdd"
     private TextField txtRwdNumberAdd; // Value injected by FXMLLoader
 
-    @FXML // fx:id="txtRwdDescAdd"
+    @FXML // fx:id="txtRwdDescAdd"c
     private TextField txtRwdDescAdd; // Value injected by FXMLLoader
 
     @FXML // fx:id="comboRwdSponsorIDAdd"
@@ -71,7 +73,7 @@ public class AddRewardController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("reward-gui-view.fxml"));
             Stage secondWindow = new Stage();
-            Scene scene = new Scene(fxmlLoader.load(), 502, 286);
+            Scene scene = new Scene(fxmlLoader.load(), 600, 500);
             secondWindow.setTitle("Reward Manager");
             secondWindow.setScene(scene);
             secondWindow.show();

@@ -12,24 +12,13 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: white;" stylesheets="@menu-stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.MainController">
    <children>
-      <Text fill="#2b82b4" layoutX="21.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Rewards Management System" textAlignment="CENTER" wrappingWidth="571.9999990463257">
+      <Text fill="#2b82b4" layoutX="21.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Rewards Management System" textAlignment="CENTER" wrappingWidth="571.9999990463257">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
       </Text>
-      <VBox layoutX="168.0" layoutY="230.0" prefHeight="221.0" prefWidth="278.0">
+      <VBox layoutX="168.0" layoutY="271.0" prefHeight="161.0" prefWidth="278.0">
          <children>
-            <JFXButton fx:id="btnSponsors" onKeyPressed="#btnSponsorsPressed" onMouseClicked="#btnSponsorsClicked" prefHeight="60.0" prefWidth="280.0" text="Reward Sponsors">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="Arial Black" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
             <JFXButton fx:id="btnRewards" onKeyPressed="#btnRewardsPressed" onMouseClicked="#btnRewardsClicked" prefHeight="60.0" prefWidth="280.0" text="Rewards Manager">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -54,7 +43,7 @@
             </JFXButton>
          </children>
       </VBox>
-      <ImageView fitHeight="115.0" fitWidth="200.0" layoutX="200.0" layoutY="42.0">
+      <ImageView fitHeight="134.0" fitWidth="233.0" layoutX="184.0" layoutY="44.0">
          <image>
             <Image url="@TravelExpertsLogo.png" />
          </image>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: white;" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.RewardsSponsorController">
+   <children>
+      <TableView fx:id="tvSponsors" layoutX="68.0" layoutY="74.0" prefHeight="226.0" prefWidth="364.0">
+        <columns>
+          <TableColumn fx:id="colSponsorsId" prefWidth="152.79998779296875" text="Sponsor Id" />
+          <TableColumn fx:id="colSponsorName" prefWidth="204.0" text="Sponsor Name" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="38.0" fitWidth="200.0" layoutX="286.0" layoutY="14.0">
+         <image>
+            <Image url="@travelexperts.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
