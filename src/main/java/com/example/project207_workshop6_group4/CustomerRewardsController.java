@@ -120,7 +120,6 @@ public class CustomerRewardsController {
         });
     }
 
-    // Laura
     @FXML
     void btnCustomerDetails(MouseEvent event) {
         if (cbCustomerId.getSelectionModel().isEmpty() == true || cbCustomerId.getSelectionModel().getSelectedItem().equals("All"))
@@ -146,7 +145,6 @@ public class CustomerRewardsController {
         }
     }
 
-    // Laura
     @FXML
     void btnCustomersTableClicked(MouseEvent event) {
         try {
@@ -195,7 +193,7 @@ public class CustomerRewardsController {
         }*/
         try {
             //change name of database to travelexperts!!!
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "root", "");
             //Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
             ResultSet rs;
@@ -227,7 +225,7 @@ public class CustomerRewardsController {
         ArrayList all = new ArrayList();
 
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "root", "");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select CustomerId from customers"); // Add all existing customer id to combobox - Laura
             ResultSetMetaData rsmd = rs.getMetaData();

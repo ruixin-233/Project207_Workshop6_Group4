@@ -92,7 +92,7 @@ public class CustomerDetailController {
 
     private void displayCustomerInfo() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "root", "");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from Customers where CustomerId = " + cbCustomerID.getSelectionModel().getSelectedItem());
             if (rs.next()){
@@ -121,7 +121,7 @@ public class CustomerDetailController {
 
     private void displayCustomerId() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "root", "");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select CustomerId from Customers order by CustomerId asc");
 
@@ -164,7 +164,7 @@ public class CustomerDetailController {
     public void setCboMainSelectedIndex(int value) {
         this.selectedIndex = value;
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts", "user", "password");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "root", "");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from Customers where CustomerId = " + selectedIndex);
             if (rs.next()){
