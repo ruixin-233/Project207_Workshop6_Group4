@@ -342,8 +342,8 @@ public class RewardGUIController {
         String sponsorName = "";
 
         // Setting up the database connection
-        String username = "user";
-        String password = "password";
+        String username = "root";
+        String password = "";
         String url = "jdbc:mysql://localhost:3306/travelexperts-2";
 
         // Opening the database connection

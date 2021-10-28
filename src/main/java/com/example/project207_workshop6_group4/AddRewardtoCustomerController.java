@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
@@ -33,6 +36,10 @@ public class AddRewardtoCustomerController {
     @FXML // fx:id="btnSave"
     private Button btnSave; // Value injected by FXMLLoader
 
+    @FXML
+    private TextField tfRwdDesc;
+
+
     //private ObservableList<CustomerRewards> mainData;
     private int selectedIndex;
 
@@ -46,12 +53,25 @@ public class AddRewardtoCustomerController {
         //this.getRewardIDs(AddRewardtoCustomerController.this.cbRewardId.getValue());
         this.getRwdNumbers(AddRewardtoCustomerController.this.cbRwdNumber.getValue());
 
-
         this.btnSave.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent mouseEvent) {
                 AddRewardtoCustomerController.this.btnSaveClicked(mouseEvent);
             }
         });
+    }
+
+    @FXML
+    void cbRwdNumberClicked(ActionEvent event) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "root", "");
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select rwdDesc from rewards where rwdNumber = " + "'" + cbRwdNumber.getSelectionModel().getSelectedItem() + "'");
+            if (rs.next()) {
+                tfRwdDesc.setText(rs.getString("RwdDesc"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private void btnSaveClicked(MouseEvent mouseEvent) {
@@ -71,7 +91,8 @@ public class AddRewardtoCustomerController {
 
     }
 
-/*    //Rewards Table updated: RewardID field is removed
+/* Rewards Table updated: RewardID field is removed
+
     private void getRewardIDs(Object value) {
         ArrayList rewardIdData = new ArrayList();
 
@@ -90,7 +111,8 @@ public class AddRewardtoCustomerController {
         } catch (SQLException var6) {
             var6.printStackTrace();
         }
-    }*/
+    }
+*/
 
     private void getRwdNumbers(Object rwdNumber) {
         ArrayList rwdNumData = new ArrayList();

@@ -2,14 +2,29 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="347.0" prefWidth="355.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.AddRewardtoCustomerController">
+<AnchorPane prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: white;" stylesheets="@StyleSheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project207_workshop6_group4.AddRewardtoCustomerController">
    <children>
-      <ComboBox fx:id="cbRewardId" layoutX="102.0" layoutY="127.0" prefWidth="150.0" promptText="Reward ID" />
-      <ComboBox fx:id="cbRwdNumber" layoutX="102.0" layoutY="202.0" prefWidth="150.0" promptText="Reward Number" />
-      <TextField fx:id="tfCustomerId" editable="false" layoutX="146.0" layoutY="40.0" prefHeight="26.0" prefWidth="62.0" />
-      <Button fx:id="btnSave" layoutX="140.0" layoutY="272.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="76.0" text="Save" />
+      <ComboBox fx:id="cbRwdNumber" layoutX="237.0" layoutY="149.0" onAction="#cbRwdNumberClicked" prefHeight="26.0" prefWidth="171.0" />
+      <TextField fx:id="tfCustomerId" editable="false" layoutX="237.0" layoutY="105.0" prefHeight="26.0" prefWidth="110.0" />
+      <Button fx:id="btnSave" layoutX="212.0" layoutY="270.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="76.0" text="Save">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Label layoutX="112.0" layoutY="200.0" text="Reward Description: " />
+      <Label layoutX="112.0" layoutY="153.0" text="Reward Number: " />
+      <ImageView fitHeight="38.0" fitWidth="200.0" layoutX="288.0" layoutY="14.0">
+         <image>
+            <Image url="@travelexperts.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="112.0" layoutY="109.0" text="Customer  ID: " />
+      <TextField fx:id="tfRwdDesc" layoutX="237.0" layoutY="196.0" prefHeight="26.0" prefWidth="171.0" />
    </children>
 </AnchorPane>

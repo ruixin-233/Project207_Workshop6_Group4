@@ -27,15 +27,11 @@
          </columnResizePolicy>
       </TableView>
       <ComboBox fx:id="cbCustomerId" layoutX="125.0" layoutY="51.0" prefHeight="26.0" prefWidth="116.0" />
-      <Button fx:id="btnSponsorsTable" layoutX="258.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#btnSponsorsTableClicked" prefHeight="30.0" prefWidth="104.0" text="Sponsors">
+      <Button fx:id="btnCustomersTable" layoutX="43.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#btnCustomersTableClicked" prefHeight="30.0" prefWidth="110.0" text="All Customers">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btnCustomersTable" layoutX="46.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#btnCustomersTableClicked" prefHeight="30.0" prefWidth="104.0" text="Customers">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font></Button>
-      <Label layoutX="46.0" layoutY="56.0" text="CustomerID：" />
+      <Label layoutX="46.0" layoutY="56.0" text="Customer ID：" />
       <Label fx:id="lblAlert" alignment="CENTER" layoutX="108.0" layoutY="24.0" prefHeight="18.0" prefWidth="150.0" textFill="RED" />
       <ImageView fitHeight="38.0" fitWidth="200.0" layoutX="386.0" layoutY="14.0">
          <image>

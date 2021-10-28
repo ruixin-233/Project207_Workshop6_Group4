@@ -1,8 +1,3 @@
-/*
-Author: Oladipupo Fadare
-Date: Oct 25 2021
- */
-
 package com.example.project207_workshop6_group4;
 
 import java.net.URL;
@@ -45,21 +40,6 @@ public class RewardsSponsorController {
         getSponsors();
     }
     private void getSponsors() {
-/*        String username = "";
-        String password = "";
-        String url = "";
-        try {
-            FileInputStream fis = new FileInputStream("c:\\connection.properties");
-            Properties p = new Properties();
-            p.load(fis);
-            username = (String) p.get("user");
-            password = (String) p.get("password");
-            url = (String) p.get("URL");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-        //Class.forName("org.mariadb.jdbc.Driver");
-        //Class.forName("com.mysql.cj.jdbc.Driver");
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/travelexperts-2", "root", "");
             //Connection conn = DriverManager.getConnection(url, username, password);

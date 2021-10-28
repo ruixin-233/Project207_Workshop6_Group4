@@ -1,7 +1,3 @@
-/*
-Author: Alishea
- */
-
 package com.example.project207_workshop6_group4;
 
 import java.io.IOException;
