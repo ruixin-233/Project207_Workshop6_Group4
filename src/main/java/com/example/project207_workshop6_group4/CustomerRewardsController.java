@@ -255,6 +255,8 @@ public class CustomerRewardsController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setScene(scene);
         stage.showAndWait();
+
+        this.loadCustomer();
     }
 }
 

@@ -118,8 +118,8 @@ public class AddRewardController {
         }
 
         // Setting up the values to open the database connection from file input
-        String username = "user";
-        String password = "password";
+        String username = "root";
+        String password = "";
         String url = "jdbc:mysql://localhost:3306/travelexperts-2";
 
 //        try{
